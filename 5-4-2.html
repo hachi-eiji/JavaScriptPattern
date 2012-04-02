@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<script>
+var MYAPP = MYAPP || {};
+MYAPP.namespace = function(ns_string) {
+    var parts = ns_string.split('.'),
+        parent = MYAPP,
+        i;
+    if (parts[0] === 'MYAPP') {
+        parts = parts.slice(1);
+    }
+    for (i = 0; i < parts.length; i++) {
+        if (typeof parent[parts[i]] === 'undefined') {
+            parent[parts[i]] = {};
+        }
+        parent = parent[parts[i]];
+    }
+    return parent;
+};
+MYAPP.namespace('MYAPP.utils.Array');
+
+MYAPP.utils.Array = (function() {
+    var uobj = MYAPP.utils.object,
+        ulang = MYAPP.utils.lang,
+		ConStr;
+        array_string = '[object Array]',
+        ops = Object.prototype.toString,
+		// public api (constructor)
+		Constr = function(o){
+			this.elements = this.toArray(o);
+		};
+		// public api (prototype)
+		Constr.prototype = {
+			constructor: MYAPP.utils.Array,
+			version: '2.0',
+			toArray: function(obj){
+				for(var i = 0, a = [], len = obj.length; i < len; i += 1){
+					a[i] = obj[i];
+				}
+				return a;
+			},
+			isArray: function(){
+				return ops.call(this.elements) === array_string;
+			},
+			indexOf: function(a){
+				if(this.isArray() === false){
+					return -1;
+				}
+				for(var i = 0,len = this.elements.length; i < len; i += 1){
+					if(this.elements[i] === a){
+						return i;
+					}
+				}
+				return -1;
+			}
+		};
+		return Constr;
+}());
+
+var arr = new MYAPP.utils.Array([1,2]);
+var arr2 = new MYAPP.utils.Array([3,4]);
+
+console.log(arr.indexOf(3));
+console.log(arr2.indexOf(3));
+</script>
+</html>
