@@ -25,5 +25,28 @@
 	// インスタンスでも静的メソッドを動かす
 	Gadget.prototype.isShiny = Gadget.isShiny;
 	console.log(iphone.isShiny()); // 'you bet';
+
+	// プライベートな静的メンバ
+	var PrivateGadget = (function(){
+		// 静的変数 / プロパティ
+		var counter = 0,
+			NewGadget ;
+		NewGadget = function(){
+			counter += 1;
+		};
+		NewGadget.prototype.getLastId = function(){
+			return counter;
+		};
+
+		// コンストラクタを上書き
+		return NewGadget;
+	}());
+	var ipad = new PrivateGadget();
+	console.log(ipad.getLastId()); // 1;
+	var ipod = new PrivateGadget();
+	console.log(ipod.getLastId()); // 2;
+	var iMac = new PrivateGadget();
+	console.log(iMac.getLastId()); // 3;
+
 </script>
 </html>
