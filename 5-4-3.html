@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<script>
+<!--
+var MYAPP = MYAPP || {};
+MYAPP.namespace = function(ns_string){
+	var parts = ns_string.split('.'),
+		parent = MYAPP,
+		i;
+	if(parts[0] === 'MYAPP'){
+		parts = parts.slice(1);
+	}
+	for(i = 0 ; i < parts.length; i += 1){
+		if(typeof parent[parts[i]] === 'undefined'){
+			parent[parts[i]] = {};
+		}
+		parent = parent[parts[i]];
+	}
+	return parent;
+};
+
+MYAPP.namespace('MYAPP.utils.array');
+
+MYAPP.utils.Array = (function(){
+	var uobj = MYAPP.utils.object,
+	ulang = MYAPP.utils.lang,
+	array_string = '[object Array]',
+	ops = Object.prototype.toString,
+	Constr;
+
+	// public constructor
+	Constr = function(o){
+		this.elements = this.toArray(o);
+	};
+	Constr.prototype = {
+		toArray : function(obj){
+			for(var i = 0, len = obj.length, a = []; i < len ; i += 1){
+				a[i] = obj[i];
+			}
+			return a;
+		},
+		isArray : function(){
+			return ops.call(this.elements) === array_string;
+		},
+		inArray : function(a){
+			for(var i = 0, len = this.elements.length ; i < len ; i += 1){
+				if(this.elements[i] === a){
+					return i;
+				}
+			}
+			return -1;
+		}
+	};
+	return Constr;
+}());
+
+var ary = new MYAPP.utils.Array([1,2]);
+alert(ary.isArray());
+
+//-->
+</script>
