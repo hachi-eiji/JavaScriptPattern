@@ -4,6 +4,9 @@
 	<!-- 静的メンバ -->
 	var Gadget = function(){};
 	Gadget.isShiny = function(){
+		// 静的に呼び出すとthisの中身はコンストラクタ
+		// インスタンスで呼び出すとthisはオブジェクト
+		console.log(this);
 		return 'you bet';
 	};
 	// Prototypeにメソッドを追加
@@ -18,5 +21,9 @@
 	
 	console.log(Gadget.setPrice); // undefined;
 	console.log(iphone.isShiny);  // undefined;
+
+	// インスタンスでも静的メソッドを動かす
+	Gadget.prototype.isShiny = Gadget.isShiny;
+	console.log(iphone.isShiny()); // 'you bet';
 </script>
 </html>
