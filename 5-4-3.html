@@ -20,7 +20,7 @@ MYAPP.namespace = function(ns_string){
 
 MYAPP.namespace('MYAPP.utils.array');
 
-MYAPP.utils.Array = (function(){
+MYAPP.utils.Array = (function(app, global){
 	var uobj = MYAPP.utils.object,
 	ulang = MYAPP.utils.lang,
 	array_string = '[object Array]',
@@ -51,7 +51,7 @@ MYAPP.utils.Array = (function(){
 		}
 	};
 	return Constr;
-}());
+}(MYAPP, this));
 
 var ary = new MYAPP.utils.Array([1,2]);
 alert(ary.isArray());
