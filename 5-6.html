@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script>
+	<!-- 静的メンバ -->
+	var Gadget = function(){};
+	Gadget.isShiny = function(){
+		return 'you bet';
+	};
+	// Prototypeにメソッドを追加
+	Gadget.prototype.setPrice = function(price){
+		console.log(this);
+		this.price = price;
+	};
+
+	console.log(Gadget.isShiny());
+	var iphone = new Gadget();
+	iphone.setPrice(500);
+	
+	console.log(Gadget.setPrice); // undefined;
+	console.log(iphone.isShiny);  // undefined;
+</script>
+</html>
