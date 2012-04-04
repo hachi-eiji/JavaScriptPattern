@@ -14,5 +14,8 @@ var Person = function(name){
 		this.name = name;
 		return this;
 	});
+
+	var a = new Person('hoge');
+	console.log(a.setName('hoge').getName());
 </script>
 
