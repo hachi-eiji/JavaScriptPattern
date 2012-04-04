@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script>
+var builder = {
+	value: 1,
+	increment: function(){
+		this.value += 1;
+		return this;
+	},
+	add: function(v){
+		this.value += v;
+		return this;
+	},
+	shout: function(){
+		alert(this.value);
+	}
+};
+
+builder.increment().add(5).shout();
+var hoge = builder.increment();
+var fuga = hoge.add(2);
+</script>
