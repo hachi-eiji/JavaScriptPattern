@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<script>
+	function Parent(name){
+		this.name = name || 'Admin';
+	}
+	Parent.prototype.say = function(){
+		return this.name;
+	}
+
+	// 空の子コンストラクタ
+	function Child(name){}
+
+	inherit(Child, Parent);
+
+	function inherit(C, P){
+		C.prototype = new P();
+	}
+
+	var kid = new Child();
+	alert(kid.say());
+
+</script>
