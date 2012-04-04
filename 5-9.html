@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script>
+	if(typeof Function.prototype.method !== 'function'){
+		Funtion.prototype.method = function(name, fn){
+			Funtion.prototype.method[name] = fn;
+			return this;
+		};
+	}
+var Person = function(name){
+	this.name = name
+	}.method('getName', function(){
+		return this.name;
+	}).method('setName', function(name){
+		this.name = name;
+		return this;
+	});
+</script>
+
