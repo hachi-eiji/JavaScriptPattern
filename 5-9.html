@@ -2,7 +2,7 @@
 <script>
 	if(typeof Function.prototype.method !== 'function'){
 		Function.prototype.method = function(name, fn){
-			Function.prototype.method[name] = fn;
+			this.prototype[name] = fn;
 			return this;
 		};
 	}
