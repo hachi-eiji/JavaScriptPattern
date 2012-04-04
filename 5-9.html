@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <script>
 	if(typeof Function.prototype.method !== 'function'){
-		Funtion.prototype.method = function(name, fn){
-			Funtion.prototype.method[name] = fn;
+		Function.prototype.method = function(name, fn){
+			Function.prototype.method[name] = fn;
 			return this;
 		};
 	}
