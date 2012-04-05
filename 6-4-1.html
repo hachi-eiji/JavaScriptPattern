@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script>
+	function Parent(name){
+		this.name = name || 'Admin';
+	}
+	Parent.prototype.say = function(){
+		return this.name;
+	}
+
+	function Child(name){
+		Parent.apply(this, arguments);
+	}
+
+	var kid = new Child('hoge');
+	alert(kid.name); // hoge
+	alert(kid.say);  // undefined
+
+</script>
