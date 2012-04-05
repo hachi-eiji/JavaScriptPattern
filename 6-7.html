@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<script>
+	function inherit(C, P){
+		var F = function(){};
+		F.prototype = P.prototype;
+		C.prototype = new F();
+	}
+
+	function Parent(name){
+		this.name = name;
+	}
+	Parent.prototype.say = {
+		return this.name;
+	};
+
+	function Child(name){}
+
+	inherit(Child, Parent);
+
+	var kid = new Child();
+	alert(kid.say);
+
+	var kid2 = new Child('hoge');
+	alert(kid2.say);
+
+</script>
