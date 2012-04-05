@@ -13,7 +13,9 @@
 		return this.name;
 	};
 
-	function Child(name){}
+	function Child(name){
+		this.name = name;
+	}
 
 	inherit(Child, Parent);
 
@@ -21,6 +23,6 @@
 	alert(kid.name); // undefined
 
 	var kid2 = new Child('hoge');
-	alert(kid2.say()); // undefined
+	alert(kid2.say()); // hoge 
 
 </script>
