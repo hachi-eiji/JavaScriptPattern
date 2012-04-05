@@ -9,7 +9,7 @@
 	function Parent(name){
 		this.name = name;
 	}
-	Parent.prototype.say = {
+	Parent.prototype.say = function(){
 		return this.name;
 	};
 
@@ -18,9 +18,9 @@
 	inherit(Child, Parent);
 
 	var kid = new Child();
-	alert(kid.say);
+	alert(kid.name); // undefined
 
 	var kid2 = new Child('hoge');
-	alert(kid2.say);
+	alert(kid2.say()); // undefined
 
 </script>
