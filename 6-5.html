@@ -9,11 +9,11 @@
 	function Child(name){
 		Parent.apply(this, arguments);
 	}
-	Child.prototype = new Parent();
+	Child.prototype = new Parent('fugafuga');
 
 	var kid = new Child('hogehoge');
 	alert(kid.name); // hogehoge
 	alert(kid.say()); // hogehoge
 	delete kid.name;
-	alert(kid.name); // Admin 
+	alert(kid.say()); // fugafuga
 </script>
