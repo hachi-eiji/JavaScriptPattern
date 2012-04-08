@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script>
+	// プロパティのコピーによって継承
+	function extend(parent, child){
+		var i;
+		child = child || {};
+		for(i in parent){
+			if(parent.hasOwnProperty(i)){
+				alert('parent[i] -> '+parent[i]);
+				child[i] = parent[i];
+			}
+		}
+		return child;
+	}
+	var dad = {name: 'adam'};
+	var kid = extend(dad);
+	alert(kid.name);
+</script>
