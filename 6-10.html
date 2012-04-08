@@ -32,6 +32,7 @@
 				}
 			}
 		}
+		return child;
 	}
 
 	var dad = {
@@ -48,8 +49,9 @@
 	alert('dad.ary -> ' + dad.ary);
 
 	var kid2 = deepCopy(dad);
-	kid2.push('fugafuga');
+	kid2.ary.push('fugafuga');
 	alert('dad -> ' + dad.ary);
+	// deep copyなので、オブジェクトの中身は一緒に変わらない
 	alert('kid2 -> ' + kid2.ary);
 
 </script>
