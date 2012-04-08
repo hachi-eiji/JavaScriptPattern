@@ -12,6 +12,28 @@
 		}
 		return child;
 	}
+
+	function deepCopy(parent, child){
+		var i,
+			toStr = Object.prototype.toString,
+			astr = '[object Array]';
+		child = child || {};
+
+		for(i in parent){
+			if(parent.hasOwnProperty(i)){
+				// オブジェクトの時
+				if(typeof parent[i] === 'object'){
+					child[i] = (toStr.call(parent[i])) === astr ? [] : {};
+					deepCopy(parent[i], child[i]);
+
+				// 普通の変数
+				}else{
+					child[i] = parent[i];
+				}
+			}
+		}
+	}
+
 	var dad = {
 		name: 'adam',
 		ary : []
@@ -24,4 +46,10 @@
 	alert('kid.ary -> ' + kid.ary);
 	// shallow copy なのでオブジェクトは一緒に変わる。
 	alert('dad.ary -> ' + dad.ary);
+
+	var kid2 = deepCopy(dad);
+	kid2.push('fugafuga');
+	alert('dad -> ' + dad.ary);
+	alert('kid2 -> ' + kid2.ary);
+
 </script>
