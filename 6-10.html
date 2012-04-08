@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <script>
 	// プロパティのコピーによって継承
+	// 浅いコピー
 	function extend(parent, child){
 		var i;
 		child = child || {};
@@ -12,7 +13,13 @@
 		}
 		return child;
 	}
-	var dad = {name: 'adam'};
+	var dad = {
+		name: 'adam',
+		age : 20,
+		getAge : function(){
+			return this.age;
+		}
+	};
 	var kid = extend(dad);
 	alert(kid.name);
 </script>
