@@ -16,6 +16,7 @@
 	var papa = new Person();
 
 	// 継承
-	var kid = object(papa);
-	alert(kid.getName);
+	var kid = object(papa.prototype);
+	alert(typeof kid.getName); // プロトタイプを継承しているので,関数が返る。
+	alert(typeof kid.name); // プロトタイプしか継承していないのでundefinedが返る
 </script>
