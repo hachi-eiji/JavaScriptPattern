@@ -13,10 +13,8 @@
 		return this.name;
 	};
 
-	var papa = new Person();
-
 	// 継承
-	var kid = object(papa.prototype);
+	var kid = object(Person.prototype);
 	alert(typeof kid.getName); // プロトタイプを継承しているので,関数が返る。
 	alert(typeof kid.name); // プロトタイプしか継承していないのでundefinedが返る
 </script>
