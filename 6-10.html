@@ -2,12 +2,11 @@
 <script>
 	// プロパティのコピーによって継承
 	// 浅いコピー
-	function extend(parent, child){
+	function shallowCopy(parent, child){
 		var i;
 		child = child || {};
 		for(i in parent){
 			if(parent.hasOwnProperty(i)){
-				alert('parent[i] -> '+parent[i]);
 				child[i] = parent[i];
 			}
 		}
@@ -15,11 +14,14 @@
 	}
 	var dad = {
 		name: 'adam',
-		age : 20,
-		getAge : function(){
-			return this.age;
-		}
+		ary : []
 	};
-	var kid = extend(dad);
-	alert(kid.name);
+	var kid = shallowCopy(dad);
+	kid.name = 'tom';
+	kid.ary.push('hoge');
+	alert('kid.name -> ' + kid.name);
+	alert('dad.name -> ' + dad.name);
+	alert('kid.ary -> ' + kid.ary);
+	// shallow copy なのでオブジェクトは一緒に変わる。
+	alert('dad.ary -> ' + dad.ary);
 </script>
