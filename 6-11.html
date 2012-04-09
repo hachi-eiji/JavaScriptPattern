@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<script>
+	function mix(){
+		var arg, props, child = {};
+		for(arg = 0 ; arg < arguments.length; arg += 1){
+			for(props in arguments[arg]){
+				if(arguments[arg].hasOwnProperty(props)){
+					child[props] = arguments[arg][props];
+				}
+			}
+		}
+		return child;
+	}
+
+	var cake = mix(
+		{egg: 2, large: true},
+		{butter: 1, salted:true},
+		{flour: '3 cups'},
+		{sugar: 'sure!'}
+	);
+	console.dir(cake);
+</script>
