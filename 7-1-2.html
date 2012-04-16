@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<script>
+	function Universe(){
+		// 既存インスタンスがある？
+		if(typeof Universe.instance === 'object'){
+			console.log('has instance');
+			return Universe.instance;
+		}
+
+		this.start_time = 0;
+		this.bang = 'Big';
+
+		Universe.instance = this;
+	}
+
+	console.log('create uni');
+	var uni = new Universe();
+	console.log('create uni2');
+	var uni2 = new Universe();
+	console.log(uni === uni2);
+</script>
