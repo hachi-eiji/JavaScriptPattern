@@ -1,21 +1,23 @@
 <!DOCTYPE html>
+<meta charset="UTF-8">
 <script>
-	function Universe(){
-		// キャッシュされたインスタンス
-		var instance ;
+	var Universe;
+
+	(function(){
+		var instance;
 		Universe = function Universe(){
-			return instance;
+			if(instance){
+				return instance;
+			}
+			console.log(this);
+			instance = this;
+
+			this.start_time = 0;
+			this.bang = 'Big';
 		};
+	}());
 
-		Universe.prototype = this;
-		instance = new Universe();
-		instance.constructor = Universe;
 
-		instance.start_time = 0;
-		instance.bang = 'Big';
-
-		return instance;
-	}
 	Universe.prototype.nothing = true;
 	var uni = new Universe();
 
@@ -28,6 +30,8 @@
 	console.log(uni.everything === true);
 	console.log(uni2.everything === true);
 
+	// function Universe としている
 	console.log(uni.constructor.name === 'Universe');
-	console.log(uni.constructor === Universe); //uni.constructorは元のコンストラクタだが、Universeは新しいコンストラクタ
+	// uni.constructorは元のコンストラクタだが、Universeは新しいコンストラクタ
+	console.log(uni.constructor === Universe); 
 </script>
