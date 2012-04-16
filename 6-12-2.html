@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<script>
+	var one = {
+		name : 'object',
+		say : function(greet){
+			alert(greet + ',' + this.name);
+		}
+	};
+	one.say('hi');
+
+	var two = {
+		name: 'another object'
+	};
+	one.say.apply(two, ['hello']); // this はtwoを指す。
+
+	var say = one.say;
+	say('hoho'); // 変数に代入するとthisはglobalとなる.'hoho, undefined'
+</script>
