@@ -2,13 +2,19 @@
 <script>
 	function Universe(){
 		// キャッシュされたインスタンス
-		var instance = this;
-		this.start_time = 0;
-		this.bang = 'Big';
-
-		Universe = function(){
+		var instance ;
+		Universe = function Universe(){
 			return instance;
 		};
+
+		Universe.prototype = this;
+		instance = new Universe();
+		instance.constructor = Universe;
+
+		instance.start_time = 0;
+		instance.bang = 'Big';
+
+		return instance;
 	}
 	Universe.prototype.nothing = true;
 	var uni = new Universe();
@@ -19,8 +25,8 @@
 	console.log(uni.nothing === true);
 	console.log(uni2.nothing === true);
 
-	console.log(uni.everything === undefined);
-	console.log(uni2.everything === undefined);
+	console.log(uni.everything === true);
+	console.log(uni2.everything === true);
 
 	console.log(uni.constructor.name === 'Universe');
 	console.log(uni.constructor === Universe); //uni.constructorは元のコンストラクタだが、Universeは新しいコンストラクタ
