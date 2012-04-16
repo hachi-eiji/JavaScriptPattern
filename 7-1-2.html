@@ -10,10 +10,18 @@
 			return instance;
 		};
 	}
-
-	console.log('create uni');
+	Universe.prototype.nothing = true;
 	var uni = new Universe();
-	console.log('create uni2');
+
+	Universe.prototype.everything= true;
 	var uni2 = new Universe();
-	console.log(uni === uni2);
+
+	console.log(uni.nothing === true);
+	console.log(uni2.nothing === true);
+
+	console.log(uni.everything === undefined);
+	console.log(uni2.everything === undefined);
+
+	console.log(uni.constructor.name === 'Universe');
+	console.log(uni.constructor === Universe); //uni.constructorは元のコンストラクタだが、Universeは新しいコンストラクタ
 </script>
