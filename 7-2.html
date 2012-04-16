@@ -39,6 +39,15 @@
 	};
 	CarMaker.SUV= function(){
 		this.doors = 17;
+		// 個別でメソッドを定義する
+		this.kind = function(){
+			// 定義は適当
+			if(this.doors >= 5){
+				return '5 doors';
+			}else{
+				return '3 doors';
+			}
+		};
 	};
 	var corolla = CarMaker.factory('Compact');
 	var solstice = CarMaker.factory('Convertible');
@@ -46,8 +55,6 @@
 	console.log(corolla.drive());
 	console.log(solstice.drive());
 	console.log(cherokee.drive());
-
-	// ERROR
-	var error = CarMaker.factory('Kei');
+	console.log(cherokee.kind());
 
 </script>
