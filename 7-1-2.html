@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <script>
 	function Universe(){
-		// 既存インスタンスがある？
-		if(typeof Universe.instance === 'object'){
-			console.log('has instance');
-			return Universe.instance;
-		}
-
+		// キャッシュされたインスタンス
+		var instance = this;
 		this.start_time = 0;
 		this.bang = 'Big';
 
-		Universe.instance = this;
+		Universe = function(){
+			return instance;
+		};
 	}
 
 	console.log('create uni');
