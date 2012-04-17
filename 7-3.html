@@ -18,6 +18,12 @@
 			},
 			hasNext: function(){
 				return index < length;
+			},
+			rewind: function(){
+				index = 0;
+			},
+			current: function(){
+				return data[index];
 			}
 		};
 	}());
@@ -25,4 +31,6 @@
 	while(agg.hasNext()){
 		console.log(agg.next());
 	}
+	agg.rewind();
+	console.log(agg.current());
 </script>
