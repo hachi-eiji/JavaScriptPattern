@@ -107,7 +107,7 @@
 		getInfo: function(id){
 			var info = $('info' + id);
 			if(!info){
-				http.makeRequest([id], 'videos.updateList');
+				proxy.makeRequest([id], videos.updateList, videos);
 				return ;
 			}
 			if(info.style.display === 'none'){
@@ -131,6 +131,41 @@
 			url += sql + '&' + format + '&' + handler;
 			script.src = url;
 			document.body.appendChild(script);
+		}
+	};
+
+	var proxy = {
+		ids: [],
+		delay: 100,
+		timeout: null,
+		callback: null,
+		context: null,
+		makeRequest: function(id, callback, context){
+			this.ids.push(id);
+			this.callback = callback;
+			this.context = context;
+
+			if(!this.timeout){
+				this.timeout = setTimeout(function(){
+					proxy.flush();
+				}, this.delay);
+			}
+		},
+		flush: function(){
+			http.makeRequest(this.ids, "proxy.handler");
+			this.timeout = null;
+			this.ids = [];
+		},
+		handler: function(data){
+			var i, max;
+
+			if(parseInt(data.query.count, 10) === 1){
+				proxy.callback.call(proxy.context, data.query.results.Video);
+				return;
+			}
+			for(i = 0, max = data.query.results.Video.length; i < max ; i++){
+				proxy.callback.call(proxy.context, data.query.results.Video[i]);
+			}
 		}
 	};
 </script>
