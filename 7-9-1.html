@@ -51,6 +51,9 @@
 		},
 		monthly: function(){
 			this.publish('insterstring analysis', 'monthly');
+		},
+		readTweets : function(tweet){
+			alert('Call big metting! Someone ' + tweet);
 		}
 	};
 	var joe = {
@@ -59,6 +62,9 @@
 		},
 		sundayPreNap: function(monthly){
 			console.log('about to fall asleep reading this ' + monthly);
+		},
+		tweet: function(msg){
+			this.publish(msg);
 		}
 	};
 	makePublisher(paper);
@@ -70,5 +76,9 @@
 	paper.daily();
 	paper.daily();
 	paper.monthly();
+
+	makePublisher(joe);
+	joe.subscribe(paper.readTweets);
+	joe.tweet('hated the paper today');
 
 </script>
